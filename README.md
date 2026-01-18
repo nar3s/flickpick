@@ -1,16 +1,16 @@
-# 🎬 Binge Watchlist
+# FlickPick
 
-A real-time Tinder-style movie swipe app where you and your friends can match on what to watch! Built with React 19, Socket.io, and TMDB API.
+A real-time movie matching app where you and your friends can swipe to decide what to watch. Built with React 19, Socket.io, and TMDB API.
 
 ## Features
 
-- **🎬 Real Movie Data** - Powered by TMDB API with thousands of movies
-- **👥 Real-time Sync** - WebSocket-based room system for instant updates
-- **🎯 Smart Filters** - Genre, language, year, and rating filters
-- **👑 Admin Controls** - Room host approves filter changes
-- **♾️ Infinite Scroll** - Movies load automatically as you swipe
-- **🔗 Deep Link Sharing** - No login needed, just share the room link
-- **❤️ Match Detection** - Celebrate when both users swipe right
+- **Real Movie Data** - Powered by TMDB API
+- **Real-time Sync** - WebSocket-based room system
+- **Smart Filters** - Filter by genre, language, year, and rating
+- **Admin Controls** - Room host approves filter changes
+- **Infinite Scroll** - Movies load automatically as you swipe
+- **Deep Link Sharing** - No login needed, just share the room link
+- **Match Detection** - Celebrate when everyone swipes right
 
 ## Setup
 
@@ -57,24 +57,24 @@ Navigate to http://localhost:5173
 
 ### Create a Room
 
-1. Click **"Start Swiping 🎉"**
+1. Click **"Start Swiping"**
 2. A unique room code is generated
-3. Click the **🔗 Share** button to copy the link
+3. Click the **Share** button to copy the link
 4. Send to your friend!
 
 ### Filter Movies (With Admin Approval)
 
-1. Click the **🎛️ Filters** button
+1. Click the **Filters** button
 2. Select genres, language, year range, minimum rating
 3. **If you're the host**: Filters apply immediately
 4. **If you're a guest**: Filters are proposed to the host for approval
 
 ### Swipe & Match
 
-- **Drag right** or click **♥** to like
-- **Drag left** or click **✕** to pass
-- When both users like the same movie → **It's a Match! 🎉**
-- View all matches by clicking the **❤️** button
+- **Drag right** or click **Heart** to like
+- **Drag left** or click **X** to pass
+- When both users like the same movie → **It's a Match!**
+- View all matches by clicking the **Heart** button
 
 ## Project Structure
 
@@ -137,7 +137,3 @@ Then restart the dev server (Ctrl+C and `npm run dev` again).
 1. Check browser console for errors
 2. Verify `.env` file exists with valid API key
 3. Test your API key at: https://api.themoviedb.org/3/movie/550?api_key=YOUR_KEY
-
-## License
-
-MIT
