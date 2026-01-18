@@ -1,0 +1,120 @@
+.app {
+  height: 100%;
+  height: 100dvh;
+  /* Enforce dynamic viewport height */
+  width: 100vw;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  /* Header takes content size, Main takes rest */
+  overflow: hidden;
+  /* Strict overflow prevention */
+}
+
+/* Main Content */
+.app-main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  /* Keep internal flex for centering if needed */
+  flex-direction: column;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .header-btn {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Pending Filter Banner */
+.pending-filter-banner {
+  background: rgba(26, 26, 29, 0.9);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--accent);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pending-filter-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.pending-icon {
+  font-size: 20px;
+}
+
+.pending-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pending-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.pending-details {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.pending-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.btn-mini {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-approve {
+  background: var(--success);
+  color: white;
+}
+
+.btn-approve:hover {
+  background: #059669;
+}
+
+.btn-reject {
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+}
+
+.btn-reject:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.3);
+}

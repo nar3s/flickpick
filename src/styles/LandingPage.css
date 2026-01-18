@@ -1,0 +1,294 @@
+.landing-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 420px;
+    z-index: 10;
+}
+
+/* Hero Section - Cinema Style */
+.landing-hero {
+    margin-bottom: var(--spacing-xl);
+}
+
+.logo-container {
+    position: relative;
+    font-size: 90px;
+    margin-bottom: var(--spacing-lg);
+    filter: drop-shadow(0 0 20px rgba(255, 214, 10, 0.3));
+}
+
+.logo-icon {
+    display: block;
+    animation: clapSnap 3s ease-in-out infinite;
+}
+
+.logo-popcorn {
+    position: absolute;
+    top: -15px;
+    right: -35px;
+    font-size: 45px;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.app-title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-5xl);
+    font-weight: 400;
+    letter-spacing: 4px;
+    line-height: 1;
+    margin-bottom: var(--spacing-md);
+}
+
+.title-gradient {
+    display: block;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.title-light {
+    color: var(--text-primary);
+    font-size: var(--font-size-3xl);
+    letter-spacing: 6px;
+}
+
+.app-tagline {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Features - Film Strip Style */
+.features {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-card);
+    border: 2px solid var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    position: relative;
+    /* Film strip holes */
+    box-shadow:
+        inset 0 10px 0 -5px var(--bg-dark),
+        inset 0 -10px 0 -5px var(--bg-dark);
+}
+
+.features::before,
+.features::after {
+    content: '🎬';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+.features::before {
+    left: -30px;
+}
+
+.features::after {
+    right: -30px;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+}
+
+.feature-icon {
+    font-size: var(--font-size-2xl);
+    animation: projectorFlicker 2s infinite;
+}
+
+.feature-text {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Real-time badge - Gold Star */
+.realtime-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.15), rgba(255, 214, 10, 0.05));
+    border: 1px solid rgba(255, 214, 10, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    color: var(--accent);
+    margin-bottom: var(--spacing-xl);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Error message */
+.error-message {
+    padding: var(--spacing-md);
+    background: rgba(230, 57, 70, 0.15);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--primary-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-lg);
+    width: 100%;
+    text-align: center;
+}
+
+/* Actions */
+.landing-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.btn-large {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.no-login-note {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.join-room-info {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--accent-dark);
+}
+
+.join-room-info p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.room-code-display {
+    display: block;
+    font-size: var(--font-size-3xl);
+    font-family: var(--font-display);
+    letter-spacing: 8px;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.or-divider {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Floating decoration - Film elements */
+.landing-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-card {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.2;
+}
+
+.card-1 {
+    top: 8%;
+    left: 8%;
+    animation: filmReel 8s linear infinite;
+}
+
+.card-2 {
+    top: 15%;
+    right: 10%;
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.card-3 {
+    bottom: 12%;
+    left: 15%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .features {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .features::before,
+    .features::after {
+        display: none;
+    }
+
+    .feature {
+        flex-direction: row;
+        gap: var(--spacing-sm);
+    }
+
+    .app-title {
+        font-size: var(--font-size-4xl);
+    }
+
+    .title-light {
+        font-size: var(--font-size-2xl);
+    }
+
+    .logo-container {
+        font-size: 70px;
+    }
+}

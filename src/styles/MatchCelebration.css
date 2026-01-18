@@ -1,0 +1,199 @@
+.match-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 29, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Gold confetti for cinema feel */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    animation: confetti 3s ease-out forwards;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Spotlight beam effect */
+.match-overlay::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200%;
+    background: linear-gradient(180deg,
+            rgba(255, 214, 10, 0.15) 0%,
+            rgba(255, 214, 10, 0.08) 30%,
+            transparent 60%);
+    clip-path: polygon(40% 0%, 60% 0%, 80% 100%, 20% 100%);
+    animation: spotlightPulse 2s ease-in-out infinite;
+}
+
+@keyframes spotlightPulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.match-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-xl);
+    animation: curtainReveal 0.6s ease forwards, scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+
+.match-hearts {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.heart {
+    font-size: 50px;
+    animation: heartBeat 1.2s ease infinite;
+    filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.5));
+}
+
+.heart.left {
+    animation-delay: 0s;
+}
+
+.heart.right {
+    animation-delay: 0.15s;
+}
+
+.match-title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-5xl);
+    letter-spacing: 6px;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.match-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.match-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.match-poster {
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--accent);
+    box-shadow:
+        var(--shadow-lg),
+        0 0 30px rgba(255, 214, 10, 0.3),
+        0 0 60px rgba(255, 214, 10, 0.15);
+    margin-bottom: var(--spacing-md);
+    animation: float 3s ease-in-out infinite;
+}
+
+.match-movie-title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-2xl);
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.match-movie-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.match-rating {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.match-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-success:hover {
+    background: #059669;
+    /* Darker green */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

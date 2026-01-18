@@ -1,0 +1,162 @@
+.swipe-deck {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    /* Cards take available space, Buttons fixed at bottom */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    /* Create a stacking context to manage z-index locally */
+    isolation: isolate;
+}
+
+.cards-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Center grid for cards */
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: var(--spacing-sm);
+    z-index: 1;
+    /* Lower than buttons */
+}
+
+/* Action buttons - Cinema Style */
+/* Action buttons - Cinema Style */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+    padding: var(--spacing-md);
+    /* Significantly increased safe area padding to lift buttons above system UI/taskbars */
+    padding-bottom: calc(var(--spacing-2xl) + 24px + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    /* Small scrim for readability */
+    z-index: 1000;
+    /* Extremely high to ensure clickability */
+    pointer-events: auto;
+    /* Force events */
+}
+
+.action-buttons .btn-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    transition: all var(--transition-normal);
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spotlight glow effect on hover */
+.action-buttons .btn-icon::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.action-buttons .btn-danger::before {
+    background: radial-gradient(circle, rgba(230, 57, 70, 0.3), transparent 70%);
+}
+
+.action-buttons .btn-success::before {
+    background: radial-gradient(circle, rgba(46, 196, 182, 0.3), transparent 70%);
+}
+
+.action-buttons .btn-icon:hover::before {
+    opacity: 1;
+}
+
+.action-buttons .btn-icon:hover {
+    transform: scale(1.15);
+}
+
+.action-buttons .btn-icon:active {
+    transform: scale(0.95);
+}
+
+/* Empty state - Cinema Style */
+.swipe-deck-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: var(--spacing-xl);
+    text-align: center;
+    width: 100%;
+}
+
+.empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    animation: curtainReveal 0.8s ease forwards;
+    max-width: 100%;
+}
+
+.empty-icon {
+    font-size: 80px;
+    animation: filmReel 6s linear infinite;
+}
+
+.empty-content h2 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-2xl);
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.empty-content p {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 400px) {
+    .cards-container {
+        width: 90%;
+    }
+
+    .action-buttons {
+        gap: var(--spacing-md);
+    }
+
+    .action-buttons .btn-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-height: 700px) {
+    .cards-container {
+        height: 55vh;
+        min-height: 300px;
+    }
+
+    .action-buttons {
+        margin-top: var(--spacing-md);
+    }
+
+    .action-buttons .btn-icon {
+        width: 48px;
+        height: 48px;
+    }
+}

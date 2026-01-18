@@ -1,0 +1,497 @@
+:root {
+  /* 🎬 Classic Hollywood Cinema Palette */
+  --primary: #e63946;
+  --primary-light: #ff6b6b;
+  --primary-dark: #c1121f;
+  --accent: #ffd60a;
+  --accent-light: #ffe066;
+  --accent-dark: #e6b800;
+  --success: #2ec4b6;
+  --success-light: #57ded1;
+  --danger: #e63946;
+  --danger-light: #ff6b6b;
+
+  /* Cinema Neutrals - Warm blacks and creams */
+  --bg-dark: #1a1a1d;
+  --bg-card: #262626;
+  --bg-elevated: #333333;
+  --text-primary: #fffcf2;
+  --text-secondary: #ccc5b9;
+  --text-muted: #8a817c;
+
+  /* Gradients - Spotlight & Velvet */
+  --gradient-spotlight: radial-gradient(ellipse at top, rgba(255, 214, 10, 0.15) 0%, transparent 60%);
+  --gradient-velvet: linear-gradient(135deg, #780000 0%, #c1121f 50%, #e63946 100%);
+  --gradient-gold: linear-gradient(135deg, #ffd60a 0%, #ffaa00 50%, #e6b800 100%);
+  --gradient-success: linear-gradient(135deg, #2ec4b6 0%, #57ded1 100%);
+  --gradient-danger: linear-gradient(135deg, #e63946 0%, #ff6b6b 100%);
+  --gradient-card: linear-gradient(145deg, rgba(230, 57, 70, 0.08), rgba(255, 214, 10, 0.03));
+
+  /* Glass effect - warmer */
+  --glass-bg: rgba(38, 38, 38, 0.9);
+  --glass-border: rgba(255, 252, 242, 0.1);
+
+  /* Shadows - Warm glow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 30px rgba(255, 214, 10, 0.2);
+  --shadow-glow-red: 0 0 30px rgba(230, 57, 70, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Typography - Cinematic */
+  --font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  height: 100dvh;
+  /* Dynamic viewport height for mobile address bars */
+  overflow: hidden;
+  position: fixed;
+  /* Prevent bouncy scroll on iOS */
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 🎥 Cinema Spotlight Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* Spotlight from top */
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 214, 10, 0.12) 0%, transparent 60%),
+    /* Side spotlights */
+    radial-gradient(circle at 0% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 100% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 40%),
+    /* Film grain texture */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Animated spotlight sweep */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 214, 10, 0.03) 25%,
+      rgba(255, 214, 10, 0.05) 50%,
+      rgba(255, 214, 10, 0.03) 75%,
+      transparent 100%);
+  animation: spotlight-sweep 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes spotlight-sweep {
+
+  0%,
+  100% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(25%);
+  }
+}
+
+/* Glass card effect */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: var(--font-family);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: var(--gradient-velvet);
+  color: white;
+  box-shadow: var(--shadow-md), var(--shadow-glow-red);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(230, 57, 70, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 2px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card);
+  border-color: var(--accent);
+}
+
+.btn-icon {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-2xl);
+}
+
+.btn-icon.btn-danger {
+  background: var(--gradient-danger);
+  box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+}
+
+.btn-icon.btn-success {
+  background: var(--gradient-success);
+  box-shadow: 0 4px 20px rgba(46, 196, 182, 0.4);
+}
+
+/* 🎬 Cinema Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* 🎥 Film reel spin */
+@keyframes filmReel {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 🌟 Star twinkle */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* 🎭 Curtain reveal */
+@keyframes curtainReveal {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ✨ Golden sparkle */
+@keyframes sparkle {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent);
+  }
+}
+
+/* 🎬 Clapboard snap */
+@keyframes clapSnap {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(-20deg);
+  }
+
+  30% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* 📽️ Projector flicker */
+@keyframes projectorFlicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.8;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.9;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.3);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.3);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-slow) ease forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown var(--transition-slow) ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-spring) forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-film-reel {
+  animation: filmReel 4s linear infinite;
+}
+
+/* Scrollbar styling - Gold accent */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark);
+}
+
+/* Selection color */
+::selection {
+  background: var(--primary);
+  color: white;
+}
